@@ -398,9 +398,9 @@ void GStreamerStream::setup_usb_uvc() {
                     case PlatformTypeRaspberryPi: {
                         // Pi has no h265 encoder yet, but this will support it when that happens
                         if (m_camera.codec == VideoCodecH265) {
-                            m_pipeline << fmt::format("v4l2h265enc name=encodectrl bitrate={} ! ", m_camera.bitrate);
+                            m_pipeline << fmt::format("x265enc name=encodectrl bitrate={} ! ", m_camera.bitrate);
                         } else {
-                            m_pipeline << fmt::format("v4l2h264enc name=encodectrl bitrate={} ! ", m_camera.bitrate);
+                            m_pipeline << fmt::format("x264enc name=encodectrl bitrate={} ! ", m_camera.bitrate);
                         }
                         break;
                     }
